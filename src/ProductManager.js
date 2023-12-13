@@ -95,7 +95,7 @@ class ProductManager{
           ];
     }
 
-    async agregarProductos(product) {
+    async addProduct(product) {
       if(!product.titulo || !product.descripcion || !product.precio || !product.imagen || !product.code || !product.stock){
           return console.error('Datos incompletos');
       }
@@ -118,9 +118,9 @@ class ProductManager{
 
   }
 
-    async getProductsById(id){
+    async getProductsById(pid){
         const products = await this.getProducts()
-        const product = products.find((p) => p.id === id);
+        const product = products.find((p) => p.id === pid);
         if(!product){
             return console.log('producto no encontrado')
         }
@@ -128,14 +128,14 @@ class ProductManager{
 
     }
 
-    async updateProduct(id, productActualizado){
+    async updateProduct(pid, productActualizado){
       const products = await this.getProducts()
       const productUp = products.map(product => {
-          if(product.id === id){
+          if(product.id === pid){
               return{
                   ...product,
                   ...productActualizado,
-                  id
+                  pid
               }
           }
           return product;
@@ -143,11 +143,11 @@ class ProductManager{
 
       await promises.writeFile(this.path, JSON.stringify(productUp), 'utf-8');
       
-  }
+    }
 
-  async deleteProduct(id){
+  async deleteProduct(pid){
       const products = await this.getProducts()
-      const productsDelete = products.filter(product => product.id !== id);
+      const productsDelete = products.filter(product => product.id !== pid);
       await promises.writeFile(this.path, JSON.stringify(productsDelete), 'utf-8');
   }
 
