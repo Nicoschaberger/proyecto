@@ -1,11 +1,8 @@
 import { Router } from 'express'
-import ProductManager from "../ProductManager.js";
 
-const productManager = new ProductManager('./src/products.json')
 const realTimeProductsRouter = Router();
 
-realTimeProductsRouter.get('/realtimeproducts', async (req, res) => {
-    const products = await productManager.getProducts()
+realTimeProductsRouter.get('/realtimeproducts', (req, res) => {
     res.render('realTimeProducts');
 })
 
