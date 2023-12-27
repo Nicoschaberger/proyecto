@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import ProductManager from "../ProductManager.js";
 
-const productManager = new ProductManager('./src/products.json')
+const productManager = new ProductManager('./products.json')
 const productsRouter = Router();
 
 productsRouter.get('/', async (req, res) => {
@@ -52,13 +52,9 @@ productsRouter.delete('/:pid', async (req, res) => {
   res.send({mensaje: 'Producto encontrado'});
 });
 
-productsRouter.get('/', (req, res) => {  
+productsRouter.get('/', async (req, res) => {
+  const products = await productManager.getProducts();
   res.render('home', {products})
 });
-
-productsRouter.get('/realtimeproducts', (req, res) => {
-    res.render('realTimeProducts');
-})
-
 
 export default productsRouter;

@@ -1,6 +1,7 @@
 import express from "express";
 import productsRouter from "./routers/products.routes.js";
 import cartsRouter from "./routers/carts.routes.js";
+import realTimeProductsRouter from './routers/realTimeProducts.routes.js'
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
 
@@ -18,7 +19,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
 app.use('/', productsRouter);
-app.use('/realtimeproducts', productsRouter);
+app.use('/realtimeproducts', realTimeProductsRouter);
 
 const httpServer = app.listen(PORT, (req, res) => {
     console.log(`Escuchando en el servido ${PORT}`)
