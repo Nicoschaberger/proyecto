@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "Nombre": "Laptop",
     "Descripcion": "Portátil de última generación",
     "Precio": 1200.00,
@@ -8,7 +7,6 @@
     "Producto": 1
   },
   {
-    "id": 2,
     "Nombre": "Teléfono inteligente",
     "Descripcion": "Teléfono con cámara de alta resolución",
     "Precio": 800.00,
@@ -16,7 +14,6 @@
     "Producto": 2
   },
   {
-    "id": 3,
     "Nombre": "Smartwatch",
     "Descripcion": "Reloj inteligente con funciones avanzadas",
     "Precio": 150.00,
@@ -24,7 +21,6 @@
     "Producto": 3
   },
   {
-    "id": 4,
     "Nombre": "Tablet",
     "Descripcion": "Tableta con pantalla táctil",
     "Precio": 500.00,
@@ -32,7 +28,6 @@
     "Producto": 4
   },
   {
-    "id": 5,
     "Nombre": "Cámara digital",
     "Descripcion": "Cámara de fotos de alta resolución",
     "Precio": 700.00,
@@ -40,7 +35,6 @@
     "Producto": 5
   },
   {
-    "id": 6,
     "Nombre": "Auriculares inalámbricos",
     "Descripcion": "Auriculares con cancelación de ruido",
     "Precio": 100.00,
@@ -48,7 +42,6 @@
     "Producto": 6
   },
   {
-    "id": 7,
     "Nombre": "Teclado mecánico",
     "Descripcion": "Teclado para gaming con retroiluminación",
     "Precio": 80.00,
@@ -56,7 +49,6 @@
     "Producto": 7
   },
   {
-    "id": 8,
     "Nombre": "Monitor curvo",
     "Descripcion": "Monitor de alta definición con curvatura",
     "Precio": 300.00,
@@ -64,7 +56,6 @@
     "Producto": 8
   },
   {
-    "id": 9,
     "Nombre": "Altavoces Bluetooth",
     "Descripcion": "Altavoces portátiles con conexión Bluetooth",
     "Precio": 50.00,
@@ -72,7 +63,6 @@
     "Producto": 9
   },
   {
-    "id": 10,
     "Nombre": "Impresora multifunción",
     "Descripcion": "Impresora que imprime, escanea y copia",
     "Precio": 200.00,

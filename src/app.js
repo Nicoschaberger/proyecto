@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from 'mongoose';
 import productsRouter from "./routers/products.routes.js";
 import cartsRouter from "./routers/carts.routes.js";
 import realTimeProductsRouter from './routers/realTimeProducts.routes.js'
@@ -15,6 +16,7 @@ app.engine('handlebars', handlebars.engine());
 
 app.set('views', 'src/views')
 app.set('view engine', 'handlebars')
+mongoose.connect('mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/')
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
