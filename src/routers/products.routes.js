@@ -1,8 +1,6 @@
 import { Router } from 'express'
-import ProductManager from "../ProductManager.js";
 import { userModel } from '../dao/models/products.model.js';
 
-const productManager = new ProductManager('./products.json')
 const productsRouter = Router();
 
 productsRouter.get('/', async (req, res) => {
@@ -32,27 +30,27 @@ productsRouter.get('/:pid', async (req, res) => {
 productsRouter.post('/', async (req,res) => {
   const {Nombre, Descripcion, Precio, Stock, Producto } = req.body
     if(!Nombre || !Descripcion || !Precio || !Stock || !Producto){
-        return res.status(400).json({message: 'user incompleto'});
+        return res.status(400).json({message: 'Producto incompleto'});
     }
     try{
         await userModel.create({Nombre, Descripcion, Precio, Stock, Producto});
-        res.status(201).json({message: 'user creado'})
+        res.status(201).json({message: 'Producto creado'})
     } catch( error) {
         console.error(error);
-        res.status(400).json({message: 'Usuario no creado'});
+        res.status(400).json({message: 'Producto no creado'});
     }
 });
 
 productsRouter.put('/:pid', async (req, res) => {
   const {pId} = req.params;
-    const updatedProduct = req.body
-    try{
+  const updatedProduct = req.body
+  try{
     await userModel.updateOne({_id: pId}, updatedProduct);
-    res.status(200).json({message: 'Producto agregado'});
-    } catch (error) {
-        console.error(error);
-        res.status(400).json({message: 'error'});
-    }
+    res.status(200).json({message: 'Producto actualizado'});
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({message: 'error, el producto no se actualizo'});
+  }
 });
 
 productsRouter.delete('/:pid', async (req, res) => {
@@ -60,7 +58,7 @@ productsRouter.delete('/:pid', async (req, res) => {
     try{
        const deleted = await userModel.deleteOne({_id : pId})
        if(!deleted.deletedCount){
-            return res.status(404).json({message:'product no encontrado'})
+            return res.status(404).json({message:'producto no encontrado'})
        }
        res.status(200).json({message: ' User borrado'});
     } catch (error) {

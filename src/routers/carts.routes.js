@@ -1,38 +1,45 @@
 import { Router } from 'express'
-import CartManager from '../CartManager.js';
+import { cartModel } from '../dao/models/cart.model.js';
 
 const cartsRouter = Router();
-const cartManager = new CartManager('src/Cart.json');
 
 cartsRouter.get('/', async (req,res) => {
-    const carts = await cartManager.getCarts();
-    res.send(carts);
+    const carts = await cartModel.find();
+    res.send({carts});
 });
 
 cartsRouter.get('/:id', async (req,res) => {
     const {cId}= req.params
-    const cartById = await cartManager.getCartById(cId);
-    if(!cartById){
-        return res.status(404).send({mensaje: 'producto no encontrado'});
+    try {
+        const cartById = await cartModel.find(cId);
+        res.send(cartById);        
+    } catch (error) {
+        console.error(error)
+        return res.status(404).send({mensaje: 'producto no encontrado'});   
     }
-    res.send(cartById)
 });
 
 cartsRouter.post('/', async (req,res) => {
-    const cartAdded = await cartManager.addCart();
-    if(!cartAdded){
-        return res.status(400).send({mensaje: 'error: producto no agregado'});
+    try {
+        const cartAdded = await cartModel.find();
+        res.send(cartAdded);
+        
+    } catch (error) {
+        console.error(error);
+        res.status(400).send({message: 'error: producto no agregado'});   
     }
-    res.send(cartAdded);
 });
 
 cartsRouter.post('/:cId/product/:id', async (req,res) => {
     const {cId, id}= req.params;
-    const productAddedToCart = await cartManager.addProductToCart(id, cId);
-    if(!productAddedToCart){
+    try {
+        const productAddedToCart = await cartModel.find({_id: id, _id: cId});
+        res.send({mensaje: 'Producto agregado al carrito'});   
+        
+    } catch (error) {
+        console.error(error);
         return res.status(400).send({mensaje: 'producto no encontrado'});
     }
-    res.send({mensaje: 'Producto agregado al carrito'});   
 });
 
 export default cartsRouter;
