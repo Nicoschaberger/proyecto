@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from 'mongoose';
 import productsRouter from "./routers/products.routes.js";
 import cartsRouter from "./routers/carts.routes.js";
-import viewsRoutes from "./routers/views.routes.js";
+import viewsRouters from "./routers/views.routes.js"
 import realTimeProductsRouter from './routers/realTimeProducts.routes.js'
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
@@ -18,11 +18,12 @@ app.engine('handlebars', handlebars.engine());
 app.set('views', 'src/views')
 app.set('view engine', 'handlebars')
 mongoose.connect('mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce')
+
+app.use('/', viewsRouters);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
-
-app.use('/', viewsRoutes);
 app.use('/api/realtimeproducts', realTimeProductsRouter);
+
 
 const httpServer = app.listen(PORT, (req, res) => {
     console.log(`Escuchando en el servido ${PORT}`)
