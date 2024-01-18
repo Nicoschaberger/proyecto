@@ -10,21 +10,32 @@ import { Server } from "socket.io";
 const app = express();
 const PORT = 8080;
 
+//MIDLEWEARES
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
-app.use(express.json());
-app.engine('handlebars', handlebars.engine());
 
+//HANDLEBARS
+const hbs = handlebars.create({
+    runtimeOptions:{
+        allowProtoPropertiesByDefault: true
+    }
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('views', 'src/views')
 app.set('view engine', 'handlebars')
+
+// BASE DE DATOS MONGO
 mongoose.connect('mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce')
 
+// ROUTES
 app.use('/', viewsRouters);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/realtimeproducts', realTimeProductsRouter);
 
-
+// SERVER
 const httpServer = app.listen(PORT, (req, res) => {
     console.log(`Escuchando en el servido ${PORT}`)
 });

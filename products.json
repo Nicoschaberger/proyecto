@@ -3,70 +3,183 @@
     "Nombre": "Laptop",
     "Descripcion": "Portátil de última generación",
     "Precio": 1200.00,
-    "Stock": 50,
-    "Producto": 1
+    "Stock": 50
   },
   {
     "Nombre": "Teléfono inteligente",
     "Descripcion": "Teléfono con cámara de alta resolución",
     "Precio": 800.00,
-    "Stock": 100,
-    "Producto": 2
+    "Stock": 100
   },
   {
     "Nombre": "Smartwatch",
     "Descripcion": "Reloj inteligente con funciones avanzadas",
     "Precio": 150.00,
-    "Stock": 30,
-    "Producto": 3
+    "Stock": 30
   },
   {
     "Nombre": "Tablet",
     "Descripcion": "Tableta con pantalla táctil",
     "Precio": 500.00,
-    "Stock": 20,
-    "Producto": 4
+    "Stock": 20
   },
   {
     "Nombre": "Cámara digital",
     "Descripcion": "Cámara de fotos de alta resolución",
     "Precio": 700.00,
-    "Stock": 40,
-    "Producto": 5
+    "Stock": 40
   },
   {
     "Nombre": "Auriculares inalámbricos",
     "Descripcion": "Auriculares con cancelación de ruido",
     "Precio": 100.00,
-    "Stock": 60,
-    "Producto": 6
+    "Stock": 60
   },
   {
     "Nombre": "Teclado mecánico",
     "Descripcion": "Teclado para gaming con retroiluminación",
     "Precio": 80.00,
-    "Stock": 25,
-    "Producto": 7
+    "Stock": 25
   },
   {
     "Nombre": "Monitor curvo",
     "Descripcion": "Monitor de alta definición con curvatura",
     "Precio": 300.00,
-    "Stock": 15,
-    "Producto": 8
+    "Stock": 15
   },
   {
     "Nombre": "Altavoces Bluetooth",
     "Descripcion": "Altavoces portátiles con conexión Bluetooth",
     "Precio": 50.00,
-    "Stock": 50,
-    "Producto": 9
+    "Stock": 50
+    
   },
   {
     "Nombre": "Impresora multifunción",
     "Descripcion": "Impresora que imprime, escanea y copia",
     "Precio": 200.00,
-    "Stock": 10,
-    "Producto": 10
+    "Stock": 10
+    
+  },
+  {
+    "Nombre": "Impresora láser",
+    "Descripcion": "Impresora láser de alta velocidad",
+    "Precio": 300,
+    "Stock": 15
+  },
+  {
+    "Nombre": "Consola de videojuegos",
+    "Descripcion": "Consola de videojuegos de última generación",
+    "Precio": 400,
+    "Stock": 30
+  },
+  {
+    "Nombre": "Auriculares con micrófono",
+    "Descripcion": "Auriculares con micrófono incorporado",
+    "Precio": 60,
+    "Stock": 40
+  },
+  {
+    "Nombre": "Mouse gamer",
+    "Descripcion": "Mouse ergonómico para gaming",
+    "Precio": 50,
+    "Stock": 20
+  },
+  {
+    "Nombre": "Teclado inalámbrico",
+    "Descripcion": "Teclado inalámbrico compacto",
+    "Precio": 70,
+    "Stock": 25
+  },
+  {
+    "Nombre": "Smart TV",
+    "Descripcion": "Televisor inteligente con tecnología HD",
+    "Precio": 600,
+    "Stock": 10
+  },
+  {
+    "Nombre": "Disco duro externo",
+    "Descripcion": "Disco duro externo de 1TB",
+    "Precio": 80,
+    "Stock": 35
+  },
+  {
+    "Nombre": "Robot aspirador",
+    "Descripcion": "Robot aspirador con funciones avanzadas",
+    "Precio": 250,
+    "Stock": 15
+  },
+  {
+    "Nombre": "Altavoces 5.1",
+    "Descripcion": "Sistema de altavoces 5.1 para cine en casa",
+    "Precio": 120,
+    "Stock": 20
+  },
+  {
+    "Nombre": "Cámara de seguridad",
+    "Descripcion": "Cámara de seguridad para hogar",
+    "Precio": 90,
+    "Stock": 18
+  },
+  {
+    "Nombre": "Cargador inalámbrico",
+    "Descripcion": "Cargador inalámbrico rápido",
+    "Precio": 25,
+    "Stock": 50
+  },
+  {
+    "Nombre": "Reproductor de Blu-ray",
+    "Descripcion": "Reproductor de Blu-ray con capacidad de streaming",
+    "Precio": 80,
+    "Stock": 22
+  },
+  {
+    "Nombre": "Auriculares deportivos",
+    "Descripcion": "Auriculares diseñados para actividades deportivas",
+    "Precio": 40,
+    "Stock": 35
+  },
+  {
+    "Nombre": "Cámara de acción",
+    "Descripcion": "Cámara de acción resistente al agua",
+    "Precio": 120,
+    "Stock": 18
+  },
+  {
+    "Nombre": "Impresora 3D",
+    "Descripcion": "Impresora 3D para prototipos y proyectos creativos",
+    "Precio": 300,
+    "Stock": 8
+  },
+  {
+    "Nombre": "Router Wi-Fi",
+    "Descripcion": "Router inalámbrico de alta velocidad",
+    "Precio": 70,
+    "Stock": 25
+  },
+  {
+    "Nombre": "Batería externa",
+    "Descripcion": "Batería externa de carga rápida",
+    "Precio": 35,
+    "Stock": 40
+  },
+  {
+    "Nombre": "Monitor 4K",
+    "Descripcion": "Monitor de resolución 4K para una calidad de imagen superior",
+    "Precio": 500,
+    "Stock": 12
+  },
+  {
+    "Nombre": "Webcam HD",
+    "Descripcion": "Webcam de alta definición para videollamadas",
+    "Precio": 60,
+    "Stock": 30
+  },
+  {
+    "Nombre": "Lámpara inteligente",
+    "Descripcion": "Lámpara inteligente con control por voz",
+    "Precio": 45,
+    "Stock": 15
   }
+
 ]

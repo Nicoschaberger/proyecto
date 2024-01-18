@@ -5,7 +5,15 @@ const productsRouter = Router();
 
 productsRouter.get('/', async (req, res) => {
   try{
-    const product = await userModel.find();
+    const { limit = 10, page = 1, query = '', sort = '' } = req.query;
+    const [code, value] = query.split(':')
+    const product = await userModel.paginate({[code] : value},{
+      limit,
+      page,
+      sort: sort ? {Precio: sort} : {}
+    });
+    product.payload = product.docs;
+    delete product.docs
     res.status(200).json({product})
   } catch ( error ) {
     console.error(error);
