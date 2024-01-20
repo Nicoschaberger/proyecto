@@ -3,17 +3,30 @@ import mongoose from 'mongoose';
 import productsRouter from "./routers/products.routes.js";
 import cartsRouter from "./routers/carts.routes.js";
 import viewsRouters from "./routers/views.routes.js"
-import realTimeProductsRouter from './routers/realTimeProducts.routes.js'
+import realTimeProductsRouter from "./routers/realTimeProducts.routes.js";
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
+import session from 'express-session';
+import FileStore from "session-file-store";
+import MongoStore from "connect-mongo";
 
-const app = express();
 const PORT = 8080;
+const fileStore = FileStore(session);
+const app = express();
 
 //MIDLEWEARES
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(session({
+    secret: 'C0d3rh0us3',
+    store: MongoStore.create({
+        mongoUrl:'mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce',
+        ttl: 100
+    }),
+    resave: true,
+    saveUninitialized: true
+}));
 
 //HANDLEBARS
 const hbs = handlebars.create({
