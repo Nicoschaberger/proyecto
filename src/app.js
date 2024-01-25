@@ -7,22 +7,23 @@ import realTimeProductsRouter from "./routers/realTimeProducts.routes.js";
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
 import session from 'express-session';
-import FileStore from "session-file-store";
 import MongoStore from "connect-mongo";
+import sessionRoutes from "./routers/session.routes.js";
+import LoginRoutes from "./routers/login.routes.js";
+
 
 const PORT = 8080;
-const fileStore = FileStore(session);
 const app = express();
 
 //MIDLEWEARES
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+
 app.use(session({
     secret: 'C0d3rh0us3',
     store: MongoStore.create({
         mongoUrl:'mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce',
-        ttl: 100
     }),
     resave: true,
     saveUninitialized: true
@@ -47,6 +48,9 @@ app.use('/', viewsRouters);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/realtimeproducts', realTimeProductsRouter);
+app.use('/api/session', sessionRoutes);
+app.use('/api/login', LoginRoutes)
+
 
 // SERVER
 const httpServer = app.listen(PORT, (req, res) => {
