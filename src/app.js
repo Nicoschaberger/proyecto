@@ -10,6 +10,8 @@ import session from 'express-session';
 import MongoStore from "connect-mongo";
 import sessionRoutes from "./routers/session.routes.js";
 import LoginRoutes from "./routers/login.routes.js";
+import passport from 'passport';
+import initializePassport from './config/passport.config.js';
 
 
 const PORT = 8080;
@@ -35,6 +37,11 @@ const hbs = handlebars.create({
         allowProtoPropertiesByDefault: true
     }
 });
+
+// PASSPORT
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.engine('handlebars', hbs.engine);
 app.set('views', 'src/views')
