@@ -52,19 +52,13 @@ sessionRoutes.post("/restore-password", async (req, res) => {
     }
   });
 
-  sessionRoutes.get(
-    "/github",
-    passport.authenticate("github", { scope: ["user:email"] }),
-    (req, res) => {}
-  );
+  sessionRoutes.get("/github", passport.authenticate("github", { scope: ["user:email"] }), (req, res) => {
+
+  });
   
-  sessionRoutes.get(
-    "/githubcallback",
-    passport.authenticate("github", { failureRedirect: "/login" }),
-    (req, res) => {
+  sessionRoutes.get("/githubcallback", passport.authenticate("github", { failureRedirect: "/login" }), (req, res) => {
       req.session.user = req.user;
       res.redirect("/");
-    }
-  );
+  });
 
 export default sessionRoutes;

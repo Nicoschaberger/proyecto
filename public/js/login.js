@@ -1,12 +1,24 @@
-const logoutBtn = document.getElementById('logoutBtn');
+const restoreBtn = document.getElementById('restoreBtn');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const resultMessage = document.getElementById('resultMessage');
 
-logoutBtn.addEventListener('click', async (e) => {
-    const result = await fetch('http://localhost:8080/api/session/logout', {
-        method: 'post',
+restoreBtn.addEventListener('click', async (e) => {
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    const result = await fetch('http://localhost:8080/api/session/recovery', {
+        body: JSON.stringify({email, password}),
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
+        method: 'POST'
     });
-    const {redirect} = await result.json();
-    window.location.href = redirect;
+
+    if(result.status === 200 || result.status === 201){
+        resultMessage.innerHTML = 'Password restaurada';
+    }
+    else{
+        resultMessage.innerHTML = 'Error al restaurar password';
+    }
+
 });

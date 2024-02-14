@@ -1,5 +1,5 @@
 import passport from "passport";
-import local from 'passport-local'
+import local from 'passport-local';
 import { userModel } from "../dao/models/products.model.js";
 import { createHash, isValidPassword } from "../utils/bcrypt.js";
 import { Strategy as GithubStrategy } from "passport-github2";
@@ -28,18 +28,18 @@ const initializePassport = () => {
                 const result = await userModel.create(newUser);
                 return done(null, result);
             } catch (error) {
-                return done('Error to obtain the user ' + error);
+                return done(error);
             }
         }
     ));
 
     passport.use('login', new LocalStrategy(
-        {usernameField: 'email'},
+        {passReqToCallback: true, usernameField: 'email'},
         async (username, password, done) => {
             try {
                 const user = await userModel.findOne({email: username});
                 if(!user){
-                    console.log('User doenst exists');
+                    console.log('El usuario no existe');
                     return done(null, false);
                 }
                 if(!isValidPassword(user, password)){
