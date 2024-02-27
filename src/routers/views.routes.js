@@ -1,16 +1,11 @@
 import { Router } from "express";
-import { userModel } from "../dao/models/products.model.js";
+
+import { getViewProduct, getViews } from "../controllers/views.controller.js";
 
 const viewsRouters = Router();
 
-viewsRouters.get('/', (req, res) => {
-    res.render('chat');
-});
+viewsRouters.get('/', getViews);
 
-viewsRouters.get('/products', async (req, res) => {
-    const {page} = req.query;
-    const products = await userModel.find({}, page);
-    res.render('products', products);
-});
+viewsRouters.get('/products', getViewProduct);
 
 export default viewsRouters;

@@ -1,9 +1,8 @@
 import { Router } from 'express'
+import { getRealTimeProducts } from '../controllers/realTimeProducts.controllers.js';
 
 const realTimeProductsRouter = Router();
 
-realTimeProductsRouter.get('/', (req, res) => {
-    res.render('realTimeProducts');
-})
+realTimeProductsRouter.get('/', getRealTimeProducts)
 
 export default realTimeProductsRouter;
