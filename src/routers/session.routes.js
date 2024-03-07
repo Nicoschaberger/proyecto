@@ -1,4 +1,4 @@
-import { Router } from "express";
+import {Router} from 'express'
 import passport from 'passport';
 import { getSessionGithub, getSessionGithubCallback, postSession, postSessionLogin, postSessionPassword, postSessionRegister } from "../controllers/session.controller.js";
 

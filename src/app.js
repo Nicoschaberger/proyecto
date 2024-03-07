@@ -12,10 +12,15 @@ import sessionRoutes from "./routers/session.routes.js";
 import LoginRoutes from "./routers/login.routes.js";
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
+import { Command } from 'commander';
+import { getVariables } from './config.js';
 
 
-const PORT = 8080;
+const { PORT } = getVariables(options);
 const app = express();
+const program = new Command();
+program.option('--mode <mode>', 'Modo de trabajo', 'production');
+const options = program.parse();
 
 //MIDLEWEARES
 app.use(express.json());
