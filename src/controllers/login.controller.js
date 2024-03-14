@@ -1,3 +1,5 @@
+import {checkAuth, checkExistingUser} from '../middlewares/auth.js'
+
 
 export const getUser = (checkAuth, (req, res) => {
     const {user} = req.session;

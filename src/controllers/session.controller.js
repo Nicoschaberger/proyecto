@@ -2,6 +2,12 @@
 import { userModel } from "../dao/models/user.model.js"
 import { createHash, isValidPassword } from "../utils/bcrypt.js";
 import passport from 'passport';
+import UserDTO from "../dao/dtos/user.dto.js";
+
+export const getCurrentUser = (req, res) => {
+    const user = new UserDTO(req.user);
+    res.send(user.getCurrentUser());
+}
 
 export const postSessionRegister = (passport.authenticate("register", { failureRedirect: "/failregister" }), async (req, res)=> {
     res.status(201).send({ message: "Usuario Registrado" });

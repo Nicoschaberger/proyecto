@@ -13,14 +13,14 @@ import LoginRoutes from "./routers/login.routes.js";
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import { Command } from 'commander';
-import { getVariables } from './config.js';
+import { getVariables, } from "./config/config.js";
 
 
-const { PORT } = getVariables(options);
-const app = express();
 const program = new Command();
-program.option('--mode <mode>', 'Modo de trabajo', 'production');
+program.option('--mode <mode>', 'Modo de trabajo', 'development');
 const options = program.parse();
+const { PORT, mongoUrl, secret } = getVariables(options);
+const app = express();
 
 //MIDLEWEARES
 app.use(express.json());
@@ -28,10 +28,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.use(session({
-    secret: 'C0d3rh0us3',
-    store: MongoStore.create({
-        mongoUrl:'mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce',
-    }),
+    secret: secret,
+    mongoUrl: mongoUrl,
     resave: true,
     saveUninitialized: true
 }));
@@ -52,8 +50,6 @@ app.engine('handlebars', hbs.engine);
 app.set('views', 'src/views')
 app.set('view engine', 'handlebars')
 
-// BASE DE DATOS MONGO
-mongoose.connect('mongodb+srv://nicosc2006:losdelpaseo13@ecommerce.owon9si.mongodb.net/ecommerce')
 
 // ROUTES
 app.use('/', viewsRouters);
@@ -65,8 +61,8 @@ app.use('/api/login', LoginRoutes)
 
 
 // SERVER
-const httpServer = app.listen(PORT, (req, res) => {
-    console.log(`Escuchando en el servido ${PORT}`)
+const httpServer = app.listen(PORT, () => {
+    console.log(`Escuchando en puerto ${PORT}`);
 });
 
 const io = new Server(httpServer);

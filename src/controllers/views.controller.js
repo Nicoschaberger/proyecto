@@ -1,5 +1,5 @@
 
-import { userModel } from "../dao/models/products.model.js";
+import { userModel } from "../dao/models/user.model.js";
 
 
 export const getViews = (req, res) => {
