@@ -4,7 +4,9 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js -- mode=production",
+    "start:dev": "node src/app.js -- mode=development"
   },
   "keywords": [],
   "author": "",
@@ -28,7 +30,8 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "session-file-store": "^1.5.0",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "winston": "^3.12.0"
   },
   "repository": {
     "type": "git",

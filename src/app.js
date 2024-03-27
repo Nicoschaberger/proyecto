@@ -14,8 +14,10 @@ import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import { Command } from 'commander';
 import { getVariables, } from "./config/config.js";
+import { addLogger } from "./utils/logger.js";
+import dotenv from 'dotenv';
 
-
+dotenv.config();
 const program = new Command();
 program.option('--mode <mode>', 'Modo de trabajo', 'development');
 const options = program.parse();
@@ -28,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.use(session({
-    secret: secret,
+    secret: 'secret',
     mongoUrl: mongoUrl,
     resave: true,
     saveUninitialized: true
@@ -57,7 +59,18 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/realtimeproducts', realTimeProductsRouter);
 app.use('/api/session', sessionRoutes);
-app.use('/api/login', LoginRoutes)
+app.use('/api/login', LoginRoutes);
+
+//Logger
+app.use(addLogger);
+app.get('/verlogs', (req, res) => {
+    req.logger.info('Hola soy un log de info');
+    req.logger.warning('Esto es un warning');
+    req.logger.error('Esto es un error');
+    req.logger.fatal('Esto es un error FATAL');
+    req.logger.debug('Esto es un debug');
+    res.send({message: 'Error de prueba!'});
+});
 
 
 // SERVER
