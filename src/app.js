@@ -16,6 +16,9 @@ import { Command } from 'commander';
 import { getVariables, } from "./config/config.js";
 import { addLogger } from "./utils/logger.js";
 import dotenv from 'dotenv';
+import { swaggerConfig } from "./config/swagger-config.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
 
 dotenv.config();
 const program = new Command();
@@ -24,6 +27,10 @@ const options = program.parse();
 const { PORT, mongoUrl, secret } = getVariables(options);
 const app = express();
 
+
+const specs = swaggerJSDoc(swaggerConfig);
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
 //MIDLEWEARES
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -31,7 +38,7 @@ app.use(express.static('public'));
 
 app.use(session({
     secret: 'secret',
-    mongoUrl: mongoUrl,
+    mongoUrl: mongoUrl,    
     resave: true,
     saveUninitialized: true
 }));
@@ -75,7 +82,7 @@ app.get('/verlogs', (req, res) => {
 
 // SERVER
 const httpServer = app.listen(PORT, () => {
-    console.log(`Escuchando en puerto ${PORT}`);
+    console.log(`Escuchando en puerto ${PORT}`);    
 });
 
 const io = new Server(httpServer);

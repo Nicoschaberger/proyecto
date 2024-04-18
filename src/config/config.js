@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
 
 export const getVariables = (options) => {
-    const enviroment = options.opts().mode;
+    const environment = options.opts().mode;
     dotenv.config({
-        path: enviroment === 'production' ? './.env.production' : './.env.development'
-    });
+        path: environment === 'production' ? './.env.production' : './.env.development'
+      });
+      
+
 
     return {
         PORT: process.env.PORT,
