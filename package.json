@@ -4,9 +4,9 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js -- mode=production",
-    "start:dev": "node src/app.js -- mode=development"
+    "start:dev": "node src/app.js -- mode=development",
+    "test": "mocha src/test/session.test.js"
   },
   "keywords": [],
   "author": "",
