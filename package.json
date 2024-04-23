@@ -43,5 +43,10 @@
     "url": "https://github.com/Nicoschaberger/proyecto/issues"
   },
   "homepage": "https://github.com/Nicoschaberger/proyecto#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "supertest": "^6.3.4"
+  }
 }
