@@ -1,7 +1,5 @@
 import UserDTO from "../dao/dtos/user.dto.js";
-import chai from "chai";
-
-const expect = chai.expect;
+import {expect} from 'chai';
 
 describe('Test en UserDTO', () => {
     it('Corroborar que el DTO unifique el nombre y apellido en una única propiedad', () => {
@@ -13,6 +11,6 @@ describe('Test en UserDTO', () => {
             password: '12345678'
         });
 
-        expect(user.name).to.be.equal('Fernando Giraudo');
+        expect(user.name).to.be.equal('Nicolas Schaberger');
     })
 })
