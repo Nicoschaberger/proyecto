@@ -2,7 +2,8 @@ import express from "express";
 import mongoose from 'mongoose';
 import productsRouter from "./routers/products.routes.js";
 import cartsRouter from "./routers/carts.routes.js";
-import viewsRouters from "./routers/views.routes.js"
+import viewsRouters from "./routers/views.routes.js";
+import usersRouter from "./routers/users.routes.js";
 import realTimeProductsRouter from "./routers/realTimeProducts.routes.js";
 import handlebars from 'express-handlebars';
 import { Server } from "socket.io";
@@ -67,6 +68,7 @@ app.use('/api/carts', cartsRouter);
 app.use('/api/realtimeproducts', realTimeProductsRouter);
 app.use('/api/session', sessionRoutes);
 app.use('/api/login', LoginRoutes);
+app.use('/api/users', usersRouter)
 
 //Logger
 app.use(addLogger);
