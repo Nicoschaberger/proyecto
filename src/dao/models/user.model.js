@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userCollection = 'user';
+const userCollection = "users";
 
 const userSchema = mongoose.Schema({
     first_name: {
@@ -18,20 +18,35 @@ const userSchema = mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true,
+        required: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
+    },
+    cart: {
+        type: mongoose.Schema.ObjectId,
+        ref: "carts"
+    },
+    rol: {
+        type: String,
+        default: "user"
+    },
+    tokenPassword: {
+        type: Object,
     },
     documents: {
-        name: String,
-        reference: String
+        type: Array,
+        name: {
+            type: String,
+        },
+        reference: {
+            type: String,
+        }
     },
     last_connection: {
-        type: Date,
-        default: Date.now
-    },
+        type: String,
+    }
 });
 
 export const userModel = mongoose.model(userCollection, userSchema);

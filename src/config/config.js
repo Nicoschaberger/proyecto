@@ -4,8 +4,7 @@ export const getVariables = (options) => {
     const environment = options.opts().mode;
     dotenv.config({
         path: environment === 'production' ? './src/.env.production' : './src/.env.development'
-      });
-      
+      });     
 
 
     return {

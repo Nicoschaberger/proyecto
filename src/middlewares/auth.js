@@ -60,3 +60,14 @@ export const authorizeUser = (req, res, next) => {
         next();
     }
 };
+
+export const isAdmin = async (req, res, next) => {
+  const user = await User.findById(req.user.id); // Asegúrate de tener el ID del usuario en `req.user`
+  if (user && user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Acceso denegado' });
+  }
+};
+
+
